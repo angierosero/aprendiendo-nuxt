@@ -1,0 +1,14 @@
+{
+  "name": "nuxt-web",
+  "version": "1.0.0",
+  "description": "Pagina web con nuxt",
+  "main": "index.js",
+  "scripts": {
+    "dev": "nuxt"
+  },
+  "author": "Jeyson Calvache",
+  "license": "ISC",
+  "dependencies": {
+    "nuxt": "^2.4.5"
+  }
+}
