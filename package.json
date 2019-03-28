@@ -9,6 +9,7 @@
   "author": "Jeyson Calvache",
   "license": "ISC",
   "dependencies": {
+    "bootstrap-vue": "^2.0.0-rc.15",
     "nuxt": "^2.4.5"
   }
 }
