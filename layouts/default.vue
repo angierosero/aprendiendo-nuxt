@@ -1,7 +1,9 @@
 <template>
   <div>
      <navbar />
-    <nuxt/>Footer
+     <div class="container-fluid">
+        <nuxt/>
+     </div>
   </div>
 </template>
 <script>
