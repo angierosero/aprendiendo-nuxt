@@ -3,6 +3,7 @@
     <a href="/">Inicio</a>
     <a href="/contacto">Contacto</a>
   </div>-->
+  <!-- MENU -->
   <b-navbar variant="dark" type="dark" toggleable="lg">
     <b-navbar-brand href="/">BootstrapVue</b-navbar-brand>
     <b-navbar-toggle target="menu"></b-navbar-toggle>
