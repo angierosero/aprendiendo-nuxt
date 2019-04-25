@@ -1,26 +1,75 @@
 <template>
   <div>
-    <div class="row mt-4">
-      <div class="col-sm-4">
-        <h2>Listado de productos</h2>
+    <div class="row mt-5">
+      <div class="col-sm-6">
+        <h2>LISTADO DE PRODUCTOS</h2>
       </div>
-      <div class="col-sm-3">
-        <b-button variant="secondary" href="/productos/crear">Nuevo</b-button>
+      <div class="col-sm-6">
+        <b-button variant="primary" href="/productos/crear">nuevo</b-button>
       </div>
     </div>
-    <div class="row mt-4">
-      <b-table striped hover :items="items" :fields="fields"></b-table>
+    <div class="row mt-2">
+      <b-table
+        id="my-table"
+        :fields="fields"
+        :items="productos"
+        :per-page="perPage"
+        :current-page="currentPage"
+        small
+      >
+        <template slot="acciones">
+          <b-button variant="success">Editar</b-button>
+          <b-button variant="danger">eliminar</b-button>
+        </template>
+      </b-table>
+    </div>
+    <div class="mt-3">
+      <b-pagination
+        v-model="currentPage"
+        :total-rows="rows"
+        :per-page="perPage"
+        aria-controls="my-table"
+      ></b-pagination>
     </div>
   </div>
 </template>
+
 <script>
+import { db } from "../../services/firebase";
 export default {
+  asyncData() {
+    return db
+      .collection("productos")
+      .get()
+      .then(productosSnap => {
+        let productos = [];
+        productosSnap.forEach(value => {
+          productos.push({
+            id: value.id,
+            ...value.data()
+            });
+        });
+        return {
+          productos,
+          currentPage: 1,
+          perPage: 5
+        };
+      });
+  },
   data() {
     return {
-      // Note `isActive` is left out and will not appear in the rendered table
-      fields: ["Imagen", "Nombre", "Precio", "Cantidad","Acciones"],
-      items: [{}]
+      fields: ["Imagen", "nombre", "precio", "cantidad", "acciones"]
     };
+  },
+  computed: {
+    rows() {
+      return this.productos.length;
+    }
+  },
+  methods: {
+    eliminarProducto() {
+      db.collection("producos").delete(id);
+    }
   }
 };
 </script>
