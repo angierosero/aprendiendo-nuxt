@@ -71,6 +71,10 @@ export default {
     eliminarProducto(id,index){
       console.log("id: "+id)
       db.collection("productos").doc(id).delete().then(() =>{
+        let index
+        this.productos.map((value,key)=>{
+            if(value.id==id) index = key
+        })
         this.productos.splice(index, 1)
       })
     }
