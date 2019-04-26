@@ -11,6 +11,7 @@
       <b-navbar-nav>
         <b-nav-item href="/contacto">Contacto</b-nav-item>
         <b-nav-item href="/productos">Productos</b-nav-item>
+         <b-nav-item href="/categoria">Categoria</b-nav-item>
       </b-navbar-nav>
     </b-collapse>
   </b-navbar>
