@@ -12,7 +12,8 @@
     "bootstrap-vue": "^2.0.0-rc.15",
     "firebase": "^5.9.2",
     "nuxt": "^2.4.5",
-    "vue": "^2.6.10"
+    "vue": "^2.6.10",
+    "vue-currency-filter": "^3.4.2"
   },
   "devDependencies": {
     "core-js": "^2.6.5"
