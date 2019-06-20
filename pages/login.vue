@@ -13,8 +13,11 @@
                 <div align="right" >
                     <b-button  type="submit" variant="success">Guardar</b-button>
                 </div>
-                </b-form>
-        
+            </b-form>
+            <div>
+                <b-alert show variant="warning">Warning Alert</b-alert>
+            </div>
+           
         </b-card>
     </div>
 </div>

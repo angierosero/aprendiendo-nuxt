@@ -1,5 +1,5 @@
 <template>
-<div class="container-fluid row mt-5" >
+<div class="row mt-5" >
     <div class="row mx-auto">
         <b-card  header-tag="header" >
         <h6 align="center" slot="header" class="mb-2 ">Iniciar sesión</h6>
