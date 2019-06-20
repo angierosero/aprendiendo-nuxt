@@ -5,7 +5,7 @@
         <h2>Listado de categoria</h2>
       </div>
       <div class="col-sm-6">
-        <b-button  v-b-modal.nuevo @click="nuevoCategoria()">nuevo</b-button>
+        <b-button  variant="primary" v-b-modal.nuevo @click="nuevoCategoria()">nuevo</b-button>
       </div>
     </div>
     <div class="row mt-2">
@@ -24,13 +24,13 @@
         <strong>Loading...</strong>
       </div>
         <template slot="acciones" slot-scope="data">
-          <b-button  type="button" @click="editarCategoria(data.item.id)" v-b-modal.nuevo size="sm">Editar</b-button>
-          <b-button variant="dark" type="button" @click="mensaje(data.item.id,data.index)" size="sm">eliminar</b-button>
+          <b-button  variant="success" @click="editarCategoria(data.item.id)" v-b-modal.nuevo size="sm">Editar</b-button>
+          <b-button variant="danger" type="button" @click="mensaje(data.item.id,data.index)" size="sm">eliminar</b-button>
         </template>
       </b-table>
     </div>
     <!-- MODAL -->
-    <b-modal header-bg-variant="dark" header-text-variant="light"   v-model="show"
+    <b-modal header-bg-variant="info" header-text-variant="light"   v-model="show"
      id="nuevo" ref="modal" :title="tituloModal"  @show="resetModal" @hidden="resetModal" @ok="handleOk" >
       <form ref="form" @submit.stop.prevent="handleSubmit">
         <b-form-group :state="nameState" label="Nombre"  label-for="nombre" invalid-feedback="Nombre es requerido">
@@ -41,8 +41,8 @@
       </form>
       <!-- style="background-color: lightslategray"  -->
       <div slot="modal-footer" >
-        <b-button variant="secondary" @click="show=false" > Cancelar </b-button>
-        <b-button variant="dark" @click="handleOk"> Guardar </b-button>
+        <b-button variant="danger" @click="show=false" > Cancelar </b-button>
+        <b-button variant="success" @click="handleOk"> Guardar </b-button>
       </div>
     </b-modal>
      <!-- FIN MODAL -->

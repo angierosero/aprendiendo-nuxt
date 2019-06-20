@@ -1,41 +1,59 @@
 <template>
-  <div class="mt-3">
-     <b-img src="https://firebasestorage.googleapis.com/v0/b/home-proyect-6e7e1.appspot.com/o/imagenes%2FDiapositiva1.PNG?alt=media&token=094c9681-f5ce-45e1-9f87-c9ceb87ff541" fluid-grow alt="Fluid-grow image"></b-img>
+  <div class="row mt-5">
     <!-- <h1>HOLA {{msg}}</h1>
     <input type="text" v-model="msg">
     <button @click="guardar" class="btn btn-primary">Guardar</button>
-    <b-button variant="primary">Guardar</b-button>
-    <table>
+    <b-button variant="primary">Guardar</b-button> -->
+    <!-- <table>
       <tr>
         <th>nombre</th>
       </tr>
       <tr v-for="(item, index) in municipio" :key="index">
           <td>
-              {{item}}
+            {{item}}
           </td>
       </tr>
     </table> -->
+    <div class="col-sm-3 " v-for="producto in productos" :key="producto.id">
+     <cardProducto :precio="producto.precio" :nombre="producto.nombre" :imagen="producto.imagen" :slug="producto.slug"/>
+      
+    </div>
   </div>
 </template>
 <script>
-// import navbar from '../components/navbar'
+import { db } from "../services/firebase";
+import cardProducto from '../components/cardProducto'
+export default {
+  components: { cardProducto },
+  asyncData(){
+    
+    return db.collection("productos").get().then(productosSnap => {
+       let productos = [];
+        productosSnap.forEach(value => {
+          productos.push({
+            id: value.id,
+            ...value.data()
+            });
+        })
+        return{
+          productos
+        }
+    })
+  },
+  data() {
+    return {
+      // msg: "ANGIE",
+      // municipio: ["mocoa", "villagarzon", "caicedo"]
+    };
+  },
+  methods:{
+      guardar(){
+         // alert("guardando....#)
 
-// export default {
-//   components: {navbar},
-//   data() {
-//     return {
-//       msg: "ANGIE",
-//       municipio: ["mocoa", "villagarzon", "caicedo"]
-//     };
-//   },
-//   methods:{
-//       guardar(){
-//          // alert("guardando....#)
+        //  this.municipio.push(this.msg)
+        //  this.msg=''
 
-//          this.municipio.push(this.msg)
-//          this.msg=''
-
-//       }
-//   }
-// }
+      }
+  }
+}
 </script>
